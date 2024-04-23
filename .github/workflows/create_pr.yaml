@@ -20,5 +20,5 @@ jobs:
           branch: dev
           base: master
           title: Automated Pull Request
-          body: |
+          body: >
             This pull request was automatically created by the CI/CD pipeline.
