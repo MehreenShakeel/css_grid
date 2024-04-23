@@ -17,7 +17,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: feature/automated-pr
+          branch: dev
           base: master
           title: Automated Pull Request
           body: |
