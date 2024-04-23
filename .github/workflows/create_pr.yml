@@ -1,33 +1,24 @@
-name: Create PR from develop to master
+name: Auto Pull Request
 
-# run this workflow only
-# when a pull request to "develop" branch is closed
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - dev
 
 jobs:
-    pull-request:
-      runs-on: ubuntu-latest
-      steps:
-      # using v1 as repo-sync/pull-request recommends
-      # https://github.com/repo-sync/pull-request/issues/14
-      # https://github.com/actions/checkout
-      - uses: actions/checkout@v1
+  create_pull_request:
+    runs-on: ubuntu-latest
 
-      # https://github.com/repo-sync/pull-request
-      # if the pull request has been successfully merged, then create
-      # a PR to "master" branch
-      - name: pull-request
-        uses: repo-sync/pull-request@v2
-        if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # be explicit about branches
-          source_branch: "dev"
-          destination_branch: "master"
-          pr_title: "dev to master auto PR"
-          pr_body: ":robot: Automated PR from **dev** to **master**"
-          pr_label: "auto-pr"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: feature/automated-pr
+          base: master
+          title: Automated Pull Request
+          body: |
+            This pull request was automatically created by the CI/CD pipeline.
