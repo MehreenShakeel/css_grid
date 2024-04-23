@@ -16,7 +16,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          custom-token: ${{ secrets.MY_CUSTOM_TOKEN }}
           branch: dev
           base: master
           title: Automated Pull Request
