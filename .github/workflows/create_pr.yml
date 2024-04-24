@@ -13,13 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Enable Debugging
-        run: echo "::set-env name=ACTIONS_STEP_DEBUG::true"
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          custom-token: ${{ secrets.token }}
+          token: ${{ secrets.token }}
           branch: dev
           base: master
           title: Automated Pull Request
