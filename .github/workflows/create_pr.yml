@@ -3,7 +3,7 @@ name: Auto Pull Request
 on:
   push:
     branches:
-      - dev
+      - mehreen
 
 jobs:
   create_pull_request:
@@ -16,8 +16,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.token }}
-          branch: dev
+          branch: mehreen
           base: master
           title: Automated Pull Request
           commit-message: this is a test commit
