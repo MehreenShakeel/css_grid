@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-        with:
-          repository: 'https://github.com/MehreenShakeel/css_grid'
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
