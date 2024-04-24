@@ -11,14 +11,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+        with:
+          repository: 'https://github.com/MehreenShakeel/css_grid'
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
-          custom-token: ${{ secrets.token }}
+          token: ${{ secrets.token }}
           branch: dev
           base: master
           title: Automated Pull Request
+          commit-message: this is a test commit
           body: >
             This pull request was automatically created by the CI/CD pipeline.
