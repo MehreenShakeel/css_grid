@@ -13,12 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create Pull Request
+      - name: Create Pull Request 
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: mehreen
+          branch: "mehreen"
           base: master
-          title: Automated Pull Request
-          commit-message: this is a test commit
-          body: >
+          title: "Automated Pull Request"
+          committer: "${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}"
+          author: "${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}"
+          body: |
             This pull request was automatically created by the CI/CD pipeline.
+        token: ${{ secrets.token }}
