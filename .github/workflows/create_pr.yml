@@ -13,19 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: set up git
-        run: |
-          git config --global user.email "mehreensk8@gmail.com"
-          git config --global user.name "MehreenShakeel"
-          git config --global user.email
-          git config --global user.name 
-
-      - name: Create auto Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.token }}
-          branch: mehreen
-          base: master
-          title: Automated Pull Request
-          body: |
-            This pull request was automatically created by the CI/CD pipeline.
+      - name: Run the Action
+      uses: devops-infra/action-pull-request@v0.5.5
+      with:
+        github_token: ${{ secrets.token }}
+        source_branch: mehreen
+        target_branch: master
+        title: My pull request
+        template: .github/PULL_REQUEST_TEMPLATE.md
+        body: "**Automated pull request**"
+        reviewer: ""
+        assignee: ""
+        label: enhancement
+        milestone: My milestone
+        draft: true
+        old_string: "<!-- Add your description here -->"
+        new_string: "** Automatic pull request**"
+        get_diff: true
+        ignore_users: ""
+        allow_no_diff: false
