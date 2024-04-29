@@ -1,30 +1,22 @@
-name: Auto Pull Request
+name: Create PR o
 on:
   push:
     branches:
       - mehreen
+    workflow_dispatch:
 jobs:
-  create_pull_request:
+  CloudList:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout the repo
         uses: actions/checkout@v2
-      - name: Run the Action
-        uses: devops-infra/action-pull-request@v0.5.5
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
         with:
-          github_token: ${{ secrets.token }}
-          source_branch: mehreen
-          target_branch: master
-          title: My pull request
-          template: .github/PULL_REQUEST_TEMPLATE.md
-          body: "**Automated pull request**"
-          reviewer: ""
-          assignee: ""
-          label: enhancement
-          milestone: My milestone
-          draft: true
-          old_string: "<!-- Add your description here -->"
-          new_string: "** Automatic pull request**"
-          get_diff: true
-          ignore_users: ""
-          allow_no_diff: false
+          commit-message: Cloud - Update available list
+          title: Cloud - Update available list
+          body: Cloud - Update available list
+          base: master
+          labels: automated-pr, Clouds & Regions
+          branch: cloud-update-advanced-params
+          delete-branch: true
