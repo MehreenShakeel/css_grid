@@ -13,6 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: set up git
+        run: |
+          git config --global user.email "mehreensk8@gmail.com"
+          git config --global user.name "MehreenShakeel"
+          git config --global user.email
+          git config --global user.name 
+
       - name: Create auto Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
