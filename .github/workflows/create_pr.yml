@@ -1,34 +1,30 @@
 name: Auto Pull Request
-
 on:
   push:
     branches:
       - mehreen
-
 jobs:
   create_pull_request:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Run the Action
-      uses: devops-infra/action-pull-request@v0.5.5
-      with:
-        github_token: ${{ secrets.token }}
-        source_branch: mehreen
-        target_branch: master
-        title: My pull request
-        template: .github/PULL_REQUEST_TEMPLATE.md
-        body: "**Automated pull request**"
-        reviewer: ""
-        assignee: ""
-        label: enhancement
-        milestone: My milestone
-        draft: true
-        old_string: "<!-- Add your description here -->"
-        new_string: "** Automatic pull request**"
-        get_diff: true
-        ignore_users: ""
-        allow_no_diff: false
+        uses: devops-infra/action-pull-request@v0.5.5
+        with:
+          github_token: ${{ secrets.token }}
+          source_branch: mehreen
+          target_branch: master
+          title: My pull request
+          template: .github/PULL_REQUEST_TEMPLATE.md
+          body: "**Automated pull request**"
+          reviewer: ""
+          assignee: ""
+          label: enhancement
+          milestone: My milestone
+          draft: true
+          old_string: "<!-- Add your description here -->"
+          new_string: "** Automatic pull request**"
+          get_diff: true
+          ignore_users: ""
+          allow_no_diff: false
